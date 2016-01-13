@@ -11,6 +11,7 @@
     <Canvas x:Name="grid">
         <Button x:ConnectionId='1' x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="276,577,0,0" VerticalAlignment="Top"                      Background="#FF45C15C"/>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Fresh" VerticalAlignment="Top" Height="38" Width="266" Margin="10,592,0,0" FontSize="21.333" TextAlignment="Center" LineHeight="21.333"/>
+        <!--<Button x:Name="button1" Content="Go Away" Canvas.Left="167" Canvas.Top="577" Click="button1_Click"/>-->
 
     </Canvas>
 </Page>

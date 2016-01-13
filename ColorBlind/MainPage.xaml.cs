@@ -28,7 +28,7 @@ namespace ColorBlind
     public sealed partial class MainPage : Page
     {
         Random random = new Random(DateTime.Now.Millisecond);
-        
+
         Color red = new Color("#FFD60A0A");
         Color yellow = new Color("#FFFFF824");
         Color purple = new Color("#FF9C2167");
@@ -46,10 +46,8 @@ namespace ColorBlind
             colors.Add(purple);
             colors.Add(blue);
             colors.Add(green);
-  
 
             this.InitializeComponent();
-
             this.NavigationCacheMode = NavigationCacheMode.Required;
         }
 
@@ -73,7 +71,7 @@ namespace ColorBlind
         {
             Button Whom = sender as Button;
 
-            
+
             grid.Children.Remove(Whom);
             textBlock.Text = Whom.Content.ToString();
         }
@@ -82,22 +80,11 @@ namespace ColorBlind
         {
             /*Dispatcher.BeginInvoke(() =>*/
             {
-               // StackPanel panel = new StackPanel();
-                // panel.Orientation = Orientation.Vertical;
-                // Canvas panel = new Canvas();
-
-
                 int i;
                 for (i = 0; i < 5; i++)
                 {
 
-                   generate_obj();
-                    //Button btn = new Button() { Content = "Button " + i };
-                    //btn.Click += button_MyClick;
-                    //btn.Width = 130 * i;
-                    //btn.Height = 66;
-                    //btn.Margin = new Thickness(0, 0, 0, 0);//try this if you use grid
-                    //panel.Children.Add(btn);
+                    generate_obj();
                 }
 
                 //var c = panel.Children;
@@ -115,69 +102,50 @@ namespace ColorBlind
                 //       Grid.SetRow(control, i);
                 //    Grid.SetColumn(control, j);
                 // TODO: Add event handler implementation here.
-            }/*)*/;
+            };
         }
 
         //public void generate_obj(double positionX, double positionY) {
-            public void generate_obj()
+        public void generate_obj()
         {
-            Button btn = new Button() { Content = "Button "  };
+            Button btn = new Button() { Content = "Button " };
             AllTheButtons.Add(btn);
             btn.Click += button_MyClick;
             //btn.Width = 130 ;
             //btn.Height = 66;
             btn.Width = random.Next(1, 10) * 20;
             btn.Height = random.Next(1, 10) * 10;
-            
-
 
             //Thickness margin = btn.Margin;         
-            double positionX = (double)random.Next(0,(int)(grid.ActualWidth-btn.Width));
+            double positionX = (double)random.Next(0, (int)(grid.ActualWidth - btn.Width));
             //margin.Left = positionX;
             //margin.Right = 0;
             //margin.Bottom = 0;
             //margin.Top = 20;
             //btn.Margin = margin;
             btn.Margin = new Thickness(positionX, 0, 0, 0);//try this if you use grid
+            
+
             grid.Children.Add(btn);
+            btn.LayoutUpdated += button_LayoutUpdated;
 
-            // Button btn = new Button() { Content = "Button "};
-            //double a = panel.MaxWidth;
-            //double b = a - btn.Width;
-            // btn.Tapped += button_MyClick;
-
-            // btn.Width = random.Next(1, 10) * 20;
-            // btn.Height = random.Next(1, 10) * 20;
-            //// btn.Margin = new Thickness(0, 0, 0, 0);//try this if you use grid
-            // //double a = panel.MaxWidth;
-            // //double b = a - btn.Width;
-
-            // //double positionX = random.Next((int)btn.Width, (int)(b));
-            // //double positionY = 20;
-            // //Thickness margin = btn.Margin;
-            // //margin.Left = 170;
-            // //margin.Right = 0;
-            // //margin.Bottom = 0;
-            // //margin.Top = 20;
-            // //btn.Margin = margin;
-
-
-            // grid.Children.Add(btn);
-            // //panel.Children.Add(btn);
-
-
-
-            //Button btn = new Button() { Content = "Button " };
-            //Random random = new Random();
-            //btn.Tapped += button_MyClick;
-
-            //btn.Width = random.Next(50, 150); 
-            //btn.Height = random.Next(50, 150); 
-            //btn.Margin = new Thickness(0, 0, 0, 0);//try this if you use grid
-            ////grid.Children.Add(btn);
-            //panel.Children.Add(btn);
         }
 
+        private void button_LayoutUpdated(object sender, object e)
+        {
+            double y = 0;
+            //while (y < 5)
+            //{
+            //    Button btn = new Button() { Content = "Buttonsssssssssssss " };
+            //    grid.Children.Add(btn);
+            //    y++;
+            //}
+            Button Whom = sender as Button;
 
+
+            //grid.Children.Remove(Whom);
+            textBlock.Text = Whom.Content.ToString() + y.ToString();
+            y++;
+        }
     }
 }

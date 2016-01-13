@@ -30,3 +30,8 @@ c:\users\iulia\documents\visual studio 2015\Projects\ColorBlind\ColorBlind\obj\D
 c:\users\iulia\documents\visual studio 2015\Projects\ColorBlind\ColorBlind\obj\Debug\qualifiers.txt.intermediate
 c:\users\iulia\documents\visual studio 2015\Projects\ColorBlind\ColorBlind\obj\Debug\MultipleQualifiersPerDimensionFound.txt
 c:\users\iulia\documents\visual studio 2015\Projects\ColorBlind\ColorBlind\obj\Debug\ProjectArchitectures.txt
+c:\users\iulia\documents\visual studio 2015\Projects\ColorBlind\ColorBlind\bin\Debug\BlankPage1.xbf
+c:\users\iulia\documents\visual studio 2015\Projects\ColorBlind\ColorBlind\obj\Debug\BlankPage1.g.i.cs
+c:\users\iulia\documents\visual studio 2015\Projects\ColorBlind\ColorBlind\obj\Debug\BlankPage1.g.cs
+c:\users\iulia\documents\visual studio 2015\Projects\ColorBlind\ColorBlind\obj\Debug\BlankPage1.xaml
+c:\users\iulia\documents\visual studio 2015\Projects\ColorBlind\ColorBlind\obj\Debug\BlankPage1.xbf
