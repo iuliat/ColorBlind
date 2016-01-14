@@ -27,6 +27,7 @@ namespace ColorBlind
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        Boolean PotSaCeapa = false;
         Random random = new Random(DateTime.Now.Millisecond);
 
         Color red = new Color("#FFD60A0A");
@@ -38,14 +39,56 @@ namespace ColorBlind
         List<Color> colors = new List<Color>();
         List<Button> AllTheButtons = new List<Button>();
 
+        Timer Ceapa = null;
+
+        async private void CallMeCeapa(object state)
+        {
+            if(PotSaCeapa)
+            {
+                Page Victim = state as MainPage;
+                await Victim.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, UpdateBula);
+            }
+        }
+
+        void UpdateBula()
+        {
+            //var c = panel.Children;
+            foreach (Button b in AllTheButtons)
+            {
+                double y = b.Margin.Top + 1;
+                if (y <= 500)
+                {
+                    b.Content = "New ";
+                    b.Margin = new Thickness(b.Margin.Left, y, 0, 0);//try this if you use grid
+                                                               //                        y++;
+                                                               //                        b.UpdateLayout();
+
+                    // grid.LayoutUpdated += button_LayoutUpdated;
+                }
+                else
+                {
+                    grid.Children.Remove(b);
+                }
+            }
+        }
 
         public MainPage()
         {
+            Ceapa = new Timer(CallMeCeapa, this, 0, 30);
+
             colors.Add(red);
             colors.Add(yellow);
             colors.Add(purple);
             colors.Add(blue);
             colors.Add(green);
+
+            //Timer timer = new Timer();
+
+            //timer.Interval = 1000; //one second
+            //timer.Elapsed += new System.Timers.ElapsedEventHandler(timer_Elapsed);
+            //timer.Enabled = true;
+            //timer.Start();
+
 
             this.InitializeComponent();
             this.NavigationCacheMode = NavigationCacheMode.Required;
@@ -78,6 +121,8 @@ namespace ColorBlind
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
+            PotSaCeapa = false;
+
             /*Dispatcher.BeginInvoke(() =>*/
             {
                 int i;
@@ -87,22 +132,14 @@ namespace ColorBlind
                     generate_obj();
                 }
 
-                //var c = panel.Children;
-                foreach (Button b in AllTheButtons)
-                {
-                    double y = 0;
-                    while (y <= 100)
-                    {
-                        b.Content = "new" + y;
-                        b.Margin = new Thickness(40, y, 0, 0);//try this if you use grid
-                        y++;
-                    }
-                }
+
 
                 //       Grid.SetRow(control, i);
                 //    Grid.SetColumn(control, j);
                 // TODO: Add event handler implementation here.
             };
+
+            PotSaCeapa = true;
         }
 
         //public void generate_obj(double positionX, double positionY) {
@@ -118,12 +155,13 @@ namespace ColorBlind
 
             //Thickness margin = btn.Margin;         
             double positionX = (double)random.Next(0, (int)(grid.ActualWidth - btn.Width));
+            double positionY = (double)random.Next(0, (int)(btn.Height));
             //margin.Left = positionX;
             //margin.Right = 0;
             //margin.Bottom = 0;
             //margin.Top = 20;
             //btn.Margin = margin;
-            btn.Margin = new Thickness(positionX, 0, 0, 0);//try this if you use grid
+            btn.Margin = new Thickness(positionX, positionY, 0, 0);//try this if you use grid
             
 
             grid.Children.Add(btn);
@@ -133,19 +171,34 @@ namespace ColorBlind
 
         private void button_LayoutUpdated(object sender, object e)
         {
-            double y = 0;
+            //double y = 0;
             //while (y < 5)
             //{
             //    Button btn = new Button() { Content = "Buttonsssssssssssss " };
             //    grid.Children.Add(btn);
             //    y++;
             //}
-            Button Whom = sender as Button;
 
+            //if (Whom != null)
+            //{
+            //    grid.Children.Remove(Whom);
+            //    textBlock.Text = Whom.Content.ToString() + y.ToString();
+            //    Whom.Content = "asd" + y;
+            //    y++;
+            //}
+            //else
+            //{
+            //int y = 0;
+            //while (y < 2)
+            //{
+            //    Button b = new Button();
+            //    // b.Content = "neeeeeeeeeeeeeew";
+            //    grid.Children.Add(b);
+            //    y++;
+            //}
 
-            //grid.Children.Remove(Whom);
-            textBlock.Text = Whom.Content.ToString() + y.ToString();
-            y++;
+            //}
+
         }
     }
 }
