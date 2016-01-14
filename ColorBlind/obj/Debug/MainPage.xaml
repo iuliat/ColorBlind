@@ -8,10 +8,13 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Canvas x:Name="grid">
-        <Button x:ConnectionId='1' x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="276,577,0,0" VerticalAlignment="Top"                      Background="#FF45C15C"/>
+
+    <Canvas x:Name="grid" Margin="0"  >
+        <Button x:ConnectionId='1' x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="276,577,0,0" VerticalAlignment="Top"                      Background="#FF005710" BorderBrush="#FF005710" Foreground="{x:Null}"/>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Fresh" VerticalAlignment="Top" Height="38" Width="266" Margin="10,592,0,0" FontSize="21.333" TextAlignment="Center" LineHeight="21.333"/>
 
+
     </Canvas>
+
 </Page>
 

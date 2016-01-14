@@ -28,21 +28,18 @@ namespace ColorBlind
     public sealed partial class MainPage : Page
     {
         Boolean PotSaCeapa = false;
+       // public Windows.UI.Color c = new Windows.UI.Color();
+        
         Random random = new Random(DateTime.Now.Millisecond);
-
-        Color red = new Color("#FFD60A0A");
-        Color yellow = new Color("#FFFFF824");
-        Color purple = new Color("#FF9C2167");
-        Color blue = new Color("#FF0F538E");
-        Color green = new Color("#FF40B90A");
-
-        List<Color> colors = new List<Color>();
-        List<Button> AllTheButtons = new List<Button>();
-
+  
+        List<Windows.UI.Xaml.Media.SolidColorBrush> colors = new List<Windows.UI.Xaml.Media.SolidColorBrush>();
+        LinkedList<Button> AllTheButtons = new LinkedList<Button>();
+        //public StackPanel panel;
         Timer Ceapa = null;
 
         async private void CallMeCeapa(object state)
         {
+            
             if(PotSaCeapa)
             {
                 Page Victim = state as MainPage;
@@ -50,95 +47,117 @@ namespace ColorBlind
             }
         }
 
-        void UpdateBula()
+        //input ex: #dcdcdc
+        public static Windows.UI.Xaml.Media.SolidColorBrush GetColorFromHex(string hexaColor)
         {
-            //var c = panel.Children;
-            foreach (Button b in AllTheButtons)
-            {
-                double y = b.Margin.Top + 1;
-                if (y <= 500)
-                {
-                    b.Content = "New ";
-                    b.Margin = new Thickness(b.Margin.Left, y, 0, 0);//try this if you use grid
-                                                               //                        y++;
-                                                               //                        b.UpdateLayout();
-
-                    // grid.LayoutUpdated += button_LayoutUpdated;
-                }
-                else
-                {
-                    grid.Children.Remove(b);
-                }
-            }
+            return new Windows.UI.Xaml.Media.SolidColorBrush(
+                Windows.UI.Color.FromArgb(
+                    255,
+                    Convert.ToByte(hexaColor.Substring(1, 2), 16),
+                    Convert.ToByte(hexaColor.Substring(3, 2), 16),
+                    Convert.ToByte(hexaColor.Substring(5, 2), 16)
+                )
+            );
         }
 
-        public MainPage()
+        public void generateColors()
         {
-            Ceapa = new Timer(CallMeCeapa, this, 0, 30);
+            Windows.UI.Xaml.Media.SolidColorBrush red = GetColorFromHex("#FFD60A0A");
+            Windows.UI.Xaml.Media.SolidColorBrush yellow = GetColorFromHex("#FFFFF824");
+            Windows.UI.Xaml.Media.SolidColorBrush purple = GetColorFromHex("#FF9C2167");
+            Windows.UI.Xaml.Media.SolidColorBrush blue = GetColorFromHex("#FF0F538E");
+
+            Windows.UI.Xaml.Media.SolidColorBrush green = GetColorFromHex("#FF005710");
 
             colors.Add(red);
             colors.Add(yellow);
             colors.Add(purple);
             colors.Add(blue);
             colors.Add(green);
+        }
 
-            //Timer timer = new Timer();
+        void UpdateBula()
+        {
+            int length = AllTheButtons.Count();
+            if (length != 0)
+            {
+                for (int i = length - 1; i >= 0; i--)
+                {
+                    Button b = AllTheButtons.ElementAt(i);
+                    double y = b.Margin.Top + 1;
+                    if (y <= 500)
+                    {
+                       // b.Content = "New " + y;
+                        // 
+                        b.Margin = new Thickness(b.Margin.Left, y, 0, 0);
+                    }
+                    else if(y>500)
+                    {
+                        //RoutedEventArgs e = null;
+                        //button_MyClick(b, e);
+                        //generate_obj();
+                        grid.Children.Remove(b);
 
-            //timer.Interval = 1000; //one second
-            //timer.Elapsed += new System.Timers.ElapsedEventHandler(timer_Elapsed);
-            //timer.Enabled = true;
-            //timer.Start();
+                    }
+                }
 
+            }
+            //foreach (Button b in AllTheButtons)
+            //{
 
+            //    double y = b.Margin.Top + 1;
+            //    if (y <= 500)
+            //    {
+            //        b.Content = "New ";
+            //        b.Margin = new Thickness(b.Margin.Left, y, 0, 0);//try this if you use grid
+            //                                                   //                        y++;
+            //                                                   //                        b.UpdateLayout();
+
+            //        // grid.LayoutUpdated += button_LayoutUpdated;
+            //    }
+            //    else
+            //    {
+
+            //        panel.Children.Remove(b);
+            //        generate_obj();
+            //    }
+            //}
+        }
+
+        public MainPage()
+        {
+            Ceapa = new Timer(CallMeCeapa, this, 0, 30);
+            generateColors();
+
+            //panel = new StackPanel();
+            //panel.Orientation = Orientation.Vertical;
             this.InitializeComponent();
             this.NavigationCacheMode = NavigationCacheMode.Required;
         }
 
-        /// <summary>
-        /// Invoked when this page is about to be displayed in a Frame.
-        /// </summary>
-        /// <param name="e">Event data that describes how this page was reached.
-        /// This parameter is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            // TODO: Prepare page for display here.
-
-            // TODO: If your application contains multiple pages, ensure that you are
-            // handling the hardware Back button by registering for the
-            // Windows.Phone.UI.Input.HardwareButtons.BackPressed event.
-            // If you are using the NavigationHelper provided by some templates,
-            // this event is handled for you.
         }
 
         private void button_MyClick(object sender, RoutedEventArgs e)
         {
             Button Whom = sender as Button;
-
-
             grid.Children.Remove(Whom);
             textBlock.Text = Whom.Content.ToString();
+            //generate_obj();
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
+            
             PotSaCeapa = false;
-
-            /*Dispatcher.BeginInvoke(() =>*/
             {
                 int i;
                 for (i = 0; i < 5; i++)
                 {
-
                     generate_obj();
                 }
-
-
-
-                //       Grid.SetRow(control, i);
-                //    Grid.SetColumn(control, j);
-                // TODO: Add event handler implementation here.
             };
-
             PotSaCeapa = true;
         }
 
@@ -146,59 +165,30 @@ namespace ColorBlind
         public void generate_obj()
         {
             Button btn = new Button() { Content = "Button " };
-            AllTheButtons.Add(btn);
             btn.Click += button_MyClick;
-            //btn.Width = 130 ;
-            //btn.Height = 66;
-            btn.Width = random.Next(1, 10) * 20;
-            btn.Height = random.Next(1, 10) * 10;
 
-            //Thickness margin = btn.Margin;         
-            double positionX = (double)random.Next(0, (int)(grid.ActualWidth - btn.Width));
-            double positionY = (double)random.Next(0, (int)(btn.Height));
-            //margin.Left = positionX;
-            //margin.Right = 0;
-            //margin.Bottom = 0;
-            //margin.Top = 20;
-            //btn.Margin = margin;
-            btn.Margin = new Thickness(positionX, positionY, 0, 0);//try this if you use grid
+            Brush backgroud_color = colors[random.Next(0, colors.Count())];
+            btn.Background = backgroud_color;
+            btn.Foreground = backgroud_color;
             
 
+            btn.Width = random.Next(1, 10) * 20;
+            btn.Height = random.Next(1, 10) * 10;
+            double positionX = (double)random.Next(0, (int)(grid.ActualWidth - btn.Width));
+            double positionY = (double)random.Next(-100, -10);
+            btn.Margin = new Thickness(positionX, positionY, 0, 0);//try this if you use grid
+
+            //int length = AllTheButtons.Count();
+            //Boolean good = false;
+            //foreach (Button b in AllTheButtons)
+            //{
+            // // check for button to not overlap the other existent buttons
+            //}
+            
+            AllTheButtons.AddFirst(btn);
             grid.Children.Add(btn);
-            btn.LayoutUpdated += button_LayoutUpdated;
-
         }
 
-        private void button_LayoutUpdated(object sender, object e)
-        {
-            //double y = 0;
-            //while (y < 5)
-            //{
-            //    Button btn = new Button() { Content = "Buttonsssssssssssss " };
-            //    grid.Children.Add(btn);
-            //    y++;
-            //}
 
-            //if (Whom != null)
-            //{
-            //    grid.Children.Remove(Whom);
-            //    textBlock.Text = Whom.Content.ToString() + y.ToString();
-            //    Whom.Content = "asd" + y;
-            //    y++;
-            //}
-            //else
-            //{
-            //int y = 0;
-            //while (y < 2)
-            //{
-            //    Button b = new Button();
-            //    // b.Content = "neeeeeeeeeeeeeew";
-            //    grid.Children.Add(b);
-            //    y++;
-            //}
-
-            //}
-
-        }
     }
 }
