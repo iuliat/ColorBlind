@@ -1,1 +1,1 @@
-c:\users\iulia\documents\visual studio 2015\Projects\ColorBlind\ColorBlind\ColorBlind.csproj;neutral
+C:\Users\Iulia\documents\visual studio 2015\Projects\ColorBlind\ColorBlind\ColorBlind.csproj;neutral

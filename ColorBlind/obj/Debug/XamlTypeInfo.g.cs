@@ -124,15 +124,17 @@ namespace ColorBlind.ColorBlind_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[3];
-            _typeNameTable[0] = "ColorBlind.MainPage";
+            _typeNameTable = new string[4];
+            _typeNameTable[0] = "ColorBlind.GamePage";
             _typeNameTable[1] = "Windows.UI.Xaml.Controls.Page";
             _typeNameTable[2] = "Windows.UI.Xaml.Controls.UserControl";
+            _typeNameTable[3] = "Int32";
 
-            _typeTable = new global::System.Type[3];
-            _typeTable[0] = typeof(global::ColorBlind.MainPage);
+            _typeTable = new global::System.Type[4];
+            _typeTable[0] = typeof(global::ColorBlind.GamePage);
             _typeTable[1] = typeof(global::Windows.UI.Xaml.Controls.Page);
             _typeTable[2] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
+            _typeTable[3] = typeof(global::System.Int32);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -167,7 +169,7 @@ namespace ColorBlind.ColorBlind_XamlTypeInfo
             return -1;
         }
 
-        private object Activate_0_MainPage() { return new global::ColorBlind.MainPage(); }
+        private object Activate_0_GamePage() { return new global::ColorBlind.GamePage(); }
 
         private global::Windows.UI.Xaml.Markup.IXamlType CreateXamlType(int typeIndex)
         {
@@ -179,9 +181,10 @@ namespace ColorBlind.ColorBlind_XamlTypeInfo
             switch (typeIndex)
             {
 
-            case 0:   //  ColorBlind.MainPage
+            case 0:   //  ColorBlind.GamePage
                 userType = new global::ColorBlind.ColorBlind_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_0_MainPage;
+                userType.Activator = Activate_0_GamePage;
+                userType.AddMemberName("RectangleHeightMax");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -193,16 +196,35 @@ namespace ColorBlind.ColorBlind_XamlTypeInfo
             case 2:   //  Windows.UI.Xaml.Controls.UserControl
                 xamlType = new global::ColorBlind.ColorBlind_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
+
+            case 3:   //  Int32
+                xamlType = new global::ColorBlind.ColorBlind_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
             }
             return xamlType;
         }
 
 
+        private object get_0_GamePage_RectangleHeightMax(object instance)
+        {
+            var that = (global::ColorBlind.GamePage)instance;
+            return that.RectangleHeightMax;
+        }
 
         private global::Windows.UI.Xaml.Markup.IXamlMember CreateXamlMember(string longMemberName)
         {
             global::ColorBlind.ColorBlind_XamlTypeInfo.XamlMember xamlMember = null;
-            // No Local Properties
+            global::ColorBlind.ColorBlind_XamlTypeInfo.XamlUserType userType;
+
+            switch (longMemberName)
+            {
+            case "ColorBlind.GamePage.RectangleHeightMax":
+                userType = (global::ColorBlind.ColorBlind_XamlTypeInfo.XamlUserType)GetXamlTypeByName("ColorBlind.GamePage");
+                xamlMember = new global::ColorBlind.ColorBlind_XamlTypeInfo.XamlMember(this, "RectangleHeightMax", "Int32");
+                xamlMember.Getter = get_0_GamePage_RectangleHeightMax;
+                xamlMember.SetIsReadOnly();
+                break;
+            }
             return xamlMember;
         }
     }
