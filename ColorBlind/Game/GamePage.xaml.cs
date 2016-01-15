@@ -60,15 +60,20 @@ namespace ColorBlind
         {
             LinkedList<Rectangle> RemoveList = new LinkedList<Rectangle>();
 
+            checkLevel();
             lock (RectangleList)
             {
                 foreach (Rectangle rectangle in RectangleList)
                 {
                     double y = rectangle.Margin.Top + Blinkness;
 
-                    if (rectangle.Margin.Top > ScreenHeight)
+                    if (rectangle.Margin.Top > ScreenHeight - BarHeightTop)
                     {
                         RemoveList.AddLast(rectangle);
+                        if (rectangle.Fill == levelColor)
+                        {
+                            Die();
+                        }
                     }
                     else
                     {
@@ -78,8 +83,6 @@ namespace ColorBlind
 
                 foreach (Rectangle rectangle in RemoveList)
                 {
-                    /*GameArea.Children.Remove(rectangle);
-                    RectangleList.Remove(rectangle);*/
                     RectangleDestroy(rectangle);
                 }
             }
@@ -88,9 +91,21 @@ namespace ColorBlind
             RectangleCreate();
         }
 
+        private void checkLevel()
+        {
+            int score = Int32.Parse(levelScoreButtom.Content.ToString());
+            if(score >= NextLevelScore)
+            {
+                Level++;
+                this.getSettingsForLevel(Level);
+            }
+        }
+
         public GamePage()
         {
             this.generateColors();
+            this.getLevelUpgrades();
+            this.getSettingsForLevel(1);
 
             this.InitializeComponent();
             this.NavigationCacheMode = NavigationCacheMode.Required;
@@ -110,36 +125,31 @@ namespace ColorBlind
             }
 
             GameArea.Children.Remove(rectangle);
-            int totalScore = 0;
-
-            foreach(Button colorScore in ScoreBoard.Children)
+            if (levelColor == rectangle.Fill)
             {
-                if(colorScore.Background.Equals(rectangle.Fill))
-                {
-                    if(colorScore.FontStyle == Windows.UI.Text.FontStyle.Oblique)
-                    {
-                        colorScore.Content = "" + (Int32.Parse(colorScore.Content.ToString()) + 10);
-                    }
-                    else
-                    {
-                        colorScore.Content = "" + (Int32.Parse(colorScore.Content.ToString()) - 20);
-                    }
-
-                    totalScore = totalScore + Int32.Parse(colorScore.Content.ToString());
-                }
-                else
-                {
-
-                    if(colorScore.Background == colorTotal)
-                    {
-                        colorScore.Content = "" + totalScore;
-                    }
-                    else
-                    {
-                        totalScore = totalScore + Int32.Parse(colorScore.Content.ToString());
-                    }
-                }
+                levelScoreButtom.Content = "" + (Int32.Parse(levelScoreButtom.Content.ToString()) + PointLevel);
             }
+            else
+            {
+                Die();
+            }
+                   
+        }
+
+        public void Die()
+        {
+            lives--;
+            livesDisplay.Content = "Lives:" + lives;
+            if (lives == 0)
+            {
+                object sender = new object();
+                RoutedEventArgs e = new RoutedEventArgs();
+                Pause(sender, e);
+                PauseButton.Visibility = Visibility.Collapsed;
+                GameOver.Visibility = Visibility.Visible;
+                //pop up game over
+            }
+
         }
 
         public void RectangleCreate()
@@ -160,6 +170,7 @@ namespace ColorBlind
             Boolean Create = true;
             lock (RectangleList)
             {
+                
                 foreach (Rectangle otherRectangle in RectangleList)
                 {
                     if( (otherRectangle.Margin.Top > (rectangle.Margin.Top + rectangle.Height)) ||
@@ -194,36 +205,6 @@ namespace ColorBlind
             }
 
             GameArea.Children.Remove(rectangle);
-            int totalScore = 0;
-
-            foreach (Button colorScore in ScoreBoard.Children)
-            {
-                if (colorScore.Background.Equals(rectangle.Fill))
-                {
-                    if (colorScore.FontStyle == Windows.UI.Text.FontStyle.Oblique)
-                    {
-                        colorScore.Content = "" + (Int32.Parse(colorScore.Content.ToString()) - 50);
-                    }
-                    else
-                    {
-                        colorScore.Content = "" + (Int32.Parse(colorScore.Content.ToString()) + 1);
-                    }
-
-                    totalScore = totalScore + Int32.Parse(colorScore.Content.ToString());
-                }
-                else
-                {
-
-                    if (colorScore.Background == colorTotal)
-                    {
-                        colorScore.Content = "" + totalScore;
-                    }
-                    else
-                    {
-                        totalScore = totalScore + Int32.Parse(colorScore.Content.ToString());
-                    }
-                }
-            }
         }
     }
 }

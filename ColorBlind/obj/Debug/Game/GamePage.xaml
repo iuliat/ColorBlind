@@ -11,7 +11,7 @@
     <Page.BottomAppBar>
         <CommandBar x:Name="commandBar">
             <AppBarButton x:ConnectionId='1' Icon="Play" Label="Start"              />
-            <AppBarButton x:ConnectionId='2' Icon="Pause" Label="Pause"              />
+            <AppBarButton x:ConnectionId='2' Icon="Pause"  x:Name="PauseButton" Label="Pause"              />
             <AppBarButton x:ConnectionId='3' Icon="Rotate" Label="Reset"              />
         </CommandBar>
     </Page.BottomAppBar>
@@ -26,6 +26,9 @@
             </Grid.Background>
         </Grid>
         <Canvas x:Name="GameArea" Margin="0">
+        </Canvas>
+        <Canvas x:Name="GameOver" Margin="0,219,0,138" Visibility="Collapsed">
+            <TextBlock Height="213" Width="400" Text="Game Over" FontSize="40" Canvas.Top="10" TextAlignment="Center"/>
         </Canvas>
     </Grid>
 
