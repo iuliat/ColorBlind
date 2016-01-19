@@ -75,6 +75,7 @@ namespace ColorBlind
             HomeButton.Visibility = Visibility.Collapsed;
             PlayButton.Visibility = Visibility.Visible;
             GameOver.Visibility = Visibility.Collapsed;
+            NextLevel.Visibility = Visibility.Collapsed;
         }
 
 
@@ -123,6 +124,7 @@ namespace ColorBlind
             Start(sender, e);
             NextLevel.Visibility = Visibility.Collapsed;
             GameOver.Visibility = Visibility.Collapsed;
+            NextLevelButton.Visibility = Visibility.Collapsed;
 
             int numberOfScores = colors.Count;
             Chosen = GenerateSize.Next(colors.Count);
@@ -134,16 +136,16 @@ namespace ColorBlind
             levelScoreButtom.Margin = new Thickness(ScreenWidth * 3 / 4, 15, 0, 0);
             levelScoreButtom.Visibility = Visibility.Visible;
             levelScoreButtom.FontSize = 14;
-         //   levelScoreButtom.Foreground = levelColor;
+            levelScoreButtom.Foreground = levelColor;
             levelScoreButtom.Text = "Score:" + 0;
 
             livesDisplay.Margin = new Thickness(ScreenWidth * 3 / 4, 30, 0, 0);
-          //  livesDisplay.Foreground = levelColor;
+            livesDisplay.Foreground = levelColor;
             livesDisplay.Visibility = Visibility.Visible;
             livesDisplay.FontSize = 14;
             livesDisplay.Text = "Lives:" + lives;
 
-          //  CurrentlevelButton.Foreground = levelColor;
+            CurrentlevelButton.Foreground = levelColor;
             CurrentlevelButton.Margin = new Thickness(ScreenWidth * 3 / 4, 45, 0, 0);
             CurrentlevelButton.Visibility = Visibility.Visible;
             CurrentlevelButton.FontSize = 14;

@@ -24,9 +24,9 @@ namespace ColorBlind
             }
             private set { }
         }
-        public readonly int RectangleHeightMin = 10;
+        public readonly int RectangleHeightMin = 50;
         public readonly int RectangleWidthMax = 200;
-        public readonly int RectangleWidthMin = 20;
+        public readonly int RectangleWidthMin = 40;
         public readonly int BarHeightTop = 85;
         public readonly int BarHeightBottom = 85;
 

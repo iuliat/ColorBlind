@@ -63,14 +63,14 @@ namespace ColorBlind
             levelScoreButtom.Margin = new Thickness(ScreenWidth * 3 / 4, 15, 0, 0);
             levelScoreButtom.Visibility = Visibility.Visible;
             levelScoreButtom.FontSize = 14;
-           // levelScoreButtom.Foreground = levelColor;
+            levelScoreButtom.Foreground = levelColor;
 
             livesDisplay.Margin = new Thickness(ScreenWidth * 3 / 4, 30, 0, 0);
-           // livesDisplay.Foreground = levelColor;
+            livesDisplay.Foreground = levelColor;
             livesDisplay.Visibility = Visibility.Visible;
             livesDisplay.FontSize = 14;
 
-          //  CurrentlevelButton.Foreground = levelColor;
+            CurrentlevelButton.Foreground = levelColor;
             CurrentlevelButton.Margin = new Thickness(ScreenWidth * 3 / 4, 45, 0, 0);
             CurrentlevelButton.Visibility = Visibility.Visible;
             CurrentlevelButton.FontSize = 14;
