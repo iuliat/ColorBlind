@@ -24,19 +24,17 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Canvas">
       <RootProperty Name="Margin" />
-      <RootProperty Name="Visibility" />
       <RootProperty Name="Children" />
+      <RootProperty Name="Visibility" />
       <RootMethod Name="GetZIndex" />
       <RootMethod Name="SetZIndex" />
-      <RootMethod Name="GetTop" />
-      <RootMethod Name="SetTop" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.TextBlock">
-      <RootProperty Name="Height" />
-      <RootProperty Name="Width" />
       <RootProperty Name="Text" />
       <RootProperty Name="FontSize" />
       <RootProperty Name="TextAlignment" />
+      <RootProperty Name="LineHeight" />
+      <RootProperty Name="Visibility" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Media.LinearGradientBrush">
       <RootProperty Name="EndPoint" />

@@ -9,52 +9,52 @@
     <SolutionConfiguration>Debug|AnyCPU</SolutionConfiguration>
     <PackageArchitecture>neutral</PackageArchitecture>
     <PackageIdentityName>a54fcdbd-418b-43ab-bbdd-90ec483bfc37</PackageIdentityName>
-    <IntermediateOutputPath>C:\Users\Iulia\documents\visual studio 2015\Projects\ColorBlind\ColorBlind\obj\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\Iulia\Documents\Visual Studio 2015\Projects\ColorBlind\ColorBlind\obj\Debug\</IntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Users\Iulia\documents\visual studio 2015\Projects\ColorBlind\ColorBlind\bin\Debug\AppxManifest.xml">
+    <AppXManifest Include="C:\Users\Iulia\Documents\Visual Studio 2015\Projects\ColorBlind\ColorBlind\bin\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\Iulia\documents\visual studio 2015\Projects\ColorBlind\ColorBlind\bin\Debug\ColorBlind.exe">
+    <AppxPackagedFile Include="C:\Users\Iulia\Documents\Visual Studio 2015\Projects\ColorBlind\ColorBlind\bin\Debug\ColorBlind.exe">
       <PackagePath>ColorBlind.exe</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Iulia\documents\visual studio 2015\Projects\ColorBlind\ColorBlind\Assets\Logo.scale-240.png">
+    <AppxPackagedFile Include="C:\Users\Iulia\Documents\Visual Studio 2015\Projects\ColorBlind\ColorBlind\Assets\Logo.scale-240.png">
       <PackagePath>Assets\Logo.scale-240.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Iulia\documents\visual studio 2015\Projects\ColorBlind\ColorBlind\Assets\SmallLogo.scale-240.png">
+    <AppxPackagedFile Include="C:\Users\Iulia\Documents\Visual Studio 2015\Projects\ColorBlind\ColorBlind\Assets\SmallLogo.scale-240.png">
       <PackagePath>Assets\SmallLogo.scale-240.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Iulia\documents\visual studio 2015\Projects\ColorBlind\ColorBlind\Assets\SplashScreen.scale-240.png">
+    <AppxPackagedFile Include="C:\Users\Iulia\Documents\Visual Studio 2015\Projects\ColorBlind\ColorBlind\Assets\SplashScreen.scale-240.png">
       <PackagePath>Assets\SplashScreen.scale-240.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Iulia\documents\visual studio 2015\Projects\ColorBlind\ColorBlind\Assets\Square71x71Logo.scale-240.png">
+    <AppxPackagedFile Include="C:\Users\Iulia\Documents\Visual Studio 2015\Projects\ColorBlind\ColorBlind\Assets\Square71x71Logo.scale-240.png">
       <PackagePath>Assets\Square71x71Logo.scale-240.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Iulia\documents\visual studio 2015\Projects\ColorBlind\ColorBlind\Assets\StoreLogo.scale-240.png">
+    <AppxPackagedFile Include="C:\Users\Iulia\Documents\Visual Studio 2015\Projects\ColorBlind\ColorBlind\Assets\StoreLogo.scale-240.png">
       <PackagePath>Assets\StoreLogo.scale-240.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Iulia\documents\visual studio 2015\Projects\ColorBlind\ColorBlind\Assets\WideLogo.scale-240.png">
+    <AppxPackagedFile Include="C:\Users\Iulia\Documents\Visual Studio 2015\Projects\ColorBlind\ColorBlind\Assets\WideLogo.scale-240.png">
       <PackagePath>Assets\WideLogo.scale-240.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Iulia\documents\visual studio 2015\Projects\ColorBlind\ColorBlind\bin\Debug\ColorBlind.xr.xml">
+    <AppxPackagedFile Include="C:\Users\Iulia\Documents\Visual Studio 2015\Projects\ColorBlind\ColorBlind\bin\Debug\ColorBlind.xr.xml">
       <PackagePath>ColorBlind.xr.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Iulia\documents\visual studio 2015\Projects\ColorBlind\ColorBlind\bin\Debug\App.xbf">
+    <AppxPackagedFile Include="C:\Users\Iulia\Documents\Visual Studio 2015\Projects\ColorBlind\ColorBlind\bin\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Iulia\documents\visual studio 2015\Projects\ColorBlind\ColorBlind\bin\Debug\Game\GamePage.xbf">
+    <AppxPackagedFile Include="C:\Users\Iulia\Documents\Visual Studio 2015\Projects\ColorBlind\ColorBlind\bin\Debug\Game\GamePage.xbf">
       <PackagePath>Game\GamePage.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Iulia\documents\visual studio 2015\Projects\ColorBlind\ColorBlind\bin\Debug\resources.pri">
+    <AppxPackagedFile Include="C:\Users\Iulia\Documents\Visual Studio 2015\Projects\ColorBlind\ColorBlind\bin\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
     </AppxPackagedFile>
   </ItemGroup>

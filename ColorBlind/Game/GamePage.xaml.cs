@@ -8,6 +8,8 @@ using Windows.UI.Xaml.Navigation;
 using System.Threading;
 using Windows.UI.Xaml.Shapes;
 using Windows.UI.Core;
+using System.Diagnostics;
+using System.Threading.Tasks;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
 
@@ -23,22 +25,23 @@ namespace ColorBlind
         Timer DrawTimer = null;
         Timer HardTimer = null;
 
-        async private void TriggerCallback(object state)
+        public GamePage()
         {
-                Page GameArea = state as GamePage;
-                await GameArea.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, DrawCallback);
-        }
+            this.generateColors();
+            this.getLevelUpgrades();
+            this.getSettingsForLevel(1);
 
-        public static SolidColorBrush GetColorFromHex(string hexaColor)
-        {
-            return new SolidColorBrush(
-                Windows.UI.Color.FromArgb(
-                    Convert.ToByte(hexaColor.Substring(1, 2), 16),
-                    Convert.ToByte(hexaColor.Substring(3, 2), 16),
-                    Convert.ToByte(hexaColor.Substring(5, 2), 16),
-                    Convert.ToByte(hexaColor.Substring(7, 2), 16)
-                )
-            );
+            this.InitializeComponent();
+            this.NavigationCacheMode = NavigationCacheMode.Required;
+
+            PauseButton.Visibility = Visibility.Collapsed;
+            ResetButton.Visibility = Visibility.Collapsed;
+            NextLevelButton.Visibility = Visibility.Collapsed;
+            HomeButton.Visibility = Visibility.Collapsed;
+            GameDescription.Text = "Catch all the blocks having the color\n" + "displayed in the left corner of the screen.\n" + "Let's see how quick you are.";
+            GameDescription.Width = 350;
+            GameDescription.Height = 350;
+            GameDescription.Margin = new Thickness(((ScreenWidth - GameDescription.Width)/2), ((ScreenHeight - GameDescription.Height) / 2), 0, 0);
         }
 
         public void generateColors()
@@ -56,11 +59,30 @@ namespace ColorBlind
             colors.Add(green);
         }
 
+        async private void TriggerCallback(object state)
+        {
+            Page GameArea = state as GamePage;
+            await GameArea.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, DrawCallback);
+        }
+
+        public static SolidColorBrush GetColorFromHex(string hexaColor)
+        {
+            return new SolidColorBrush(
+                Windows.UI.Color.FromArgb(
+                    Convert.ToByte(hexaColor.Substring(1, 2), 16),
+                    Convert.ToByte(hexaColor.Substring(3, 2), 16),
+                    Convert.ToByte(hexaColor.Substring(5, 2), 16),
+                    Convert.ToByte(hexaColor.Substring(7, 2), 16)
+                )
+            );
+        }
+
         private void DrawCallback()
         {
             LinkedList<Rectangle> RemoveList = new LinkedList<Rectangle>();
 
             checkLevel();
+
             lock (RectangleList)
             {
                 foreach (Rectangle rectangle in RectangleList)
@@ -93,22 +115,41 @@ namespace ColorBlind
 
         private void checkLevel()
         {
-            int score = Int32.Parse(levelScoreButtom.Content.ToString());
-            if(score >= NextLevelScore)
+
+            var score = Int32.Parse(levelScoreButtom.Text.Split(':')[1]);
+            if (score >= NextLevelScore)
             {
                 Level++;
                 this.getSettingsForLevel(Level);
+                object sender = new object();
+                RoutedEventArgs e = new RoutedEventArgs();
+                Pause(sender, e);
+
+                CurrentlevelButton.Text = "Level:" + Level;
+
+                NextLevel.Visibility = Visibility.Visible;
+                NextLevelDescription.Padding = new Thickness(0, ScreenHeight / 3, 0, 0);
+                NextLevelDescription.Height = ScreenHeight;
+                NextLevelDescription.Width = ScreenWidth;
+                NextLevelDescription.Text = "Level " + Level;
+                //NextLevelButton.Padding = new Thickness(0, ScreenHeight / 2, 0, 0);
+                //NextLevelButton.Height = ScreenHeight;
+                //NextLevelButton.Width = ScreenWidth;
+                NextLevelButton.Visibility = Visibility.Visible;
+                PauseButton.Visibility = Visibility.Collapsed;
+
+
+
+
+
+                lock (RectangleList)
+                {
+                    RectangleList.Clear();
+                    GameArea.Children.Clear();
+                }
+               // 
+
             }
-        }
-
-        public GamePage()
-        {
-            this.generateColors();
-            this.getLevelUpgrades();
-            this.getSettingsForLevel(1);
-
-            this.InitializeComponent();
-            this.NavigationCacheMode = NavigationCacheMode.Required;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -127,7 +168,8 @@ namespace ColorBlind
             GameArea.Children.Remove(rectangle);
             if (levelColor == rectangle.Fill)
             {
-                levelScoreButtom.Content = "" + (Int32.Parse(levelScoreButtom.Content.ToString()) + PointLevel);
+                var score = Int32.Parse(levelScoreButtom.Text.Split(':')[1]);
+                levelScoreButtom.Text = "Score:" + (score + PointLevel);
             }
             else
             {
@@ -139,14 +181,18 @@ namespace ColorBlind
         public void Die()
         {
             lives--;
-            livesDisplay.Content = "Lives:" + lives;
+            livesDisplay.Text = "Lives:" + lives;
             if (lives == 0)
             {
                 object sender = new object();
                 RoutedEventArgs e = new RoutedEventArgs();
                 Pause(sender, e);
-                PauseButton.Visibility = Visibility.Collapsed;
+            PauseButton.Visibility = Visibility.Collapsed;
+                PlayButton.Visibility = Visibility.Collapsed;
                 GameOver.Visibility = Visibility.Visible;
+                GameOverDescription.Padding = new Thickness(0, ScreenHeight /2,0,0);
+                GameOverDescription.Height = ScreenHeight;
+                GameOverDescription.Width = ScreenWidth;
                 //pop up game over
             }
 

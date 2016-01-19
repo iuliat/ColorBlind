@@ -1,0 +1,41 @@
+﻿<Page
+    x:Class="ColorBlind.GamePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ColorBlind"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.BottomAppBar>
+        
+        <CommandBar x:Name="commandBar">
+            <AppBarButton x:ConnectionId='1' Icon="Play" Label="Start"              />
+            <AppBarButton x:ConnectionId='2' Icon="Pause"  x:Name="PauseButton" Label="Pause"              />
+            <AppBarButton x:ConnectionId='3' Icon="Rotate" Label="Reset"              />
+        </CommandBar>
+    </Page.BottomAppBar>
+
+    <Grid>
+        <Grid x:Name="ScoreBoard" VerticalAlignment="Top" Height="85" Canvas.ZIndex="9999">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="1"/>
+                    <GradientStop Color="#FF1F1F1F"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <TextBlock x:Name="levelScoreButtom" Text="Score:0" Visibility="Collapsed" FontSize="18"/>
+            <TextBlock x:Name="livesDisplay" Text="Lives:5" Visibility="Collapsed"  FontSize="18" />
+            <TextBlock x:Name="CurrentlevelButton" Text="Level:1" Visibility="Collapsed"  FontSize="18"/>
+        </Grid>
+
+        <Canvas x:Name="GameArea" Margin="0">
+        </Canvas>
+        <Canvas x:Name="GameOver" Margin="0,219,0,138" Visibility="Collapsed">
+            <TextBlock Height="213" Width="400" Text="Game Over" FontSize="40" Canvas.Top="10" TextAlignment="Center"/>
+        </Canvas>
+    </Grid>
+
+</Page>
+
