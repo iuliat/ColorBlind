@@ -21,9 +21,11 @@
     <AppxPackagedFile Include="C:\Users\Iulia\Documents\Visual Studio 2015\Projects\ColorBlind\ColorBlind\bin\Debug\ColorBlind.exe">
       <PackagePath>ColorBlind.exe</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Iulia\Documents\Visual Studio 2015\Projects\ColorBlind\ColorBlind\Assets\BadgeLogo.scale-240.png">
+      <PackagePath>Assets\BadgeLogo.scale-240.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Iulia\Documents\Visual Studio 2015\Projects\ColorBlind\ColorBlind\Assets\Logo.scale-240.png">
       <PackagePath>Assets\Logo.scale-240.png</PackagePath>
-      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Iulia\Documents\Visual Studio 2015\Projects\ColorBlind\ColorBlind\Assets\SmallLogo.scale-240.png">
       <PackagePath>Assets\SmallLogo.scale-240.png</PackagePath>
@@ -31,6 +33,14 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Iulia\Documents\Visual Studio 2015\Projects\ColorBlind\ColorBlind\Assets\SplashScreen.scale-240.png">
       <PackagePath>Assets\SplashScreen.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Iulia\Documents\Visual Studio 2015\Projects\ColorBlind\ColorBlind\Assets\Square150x150Logo.scale-140.png">
+      <PackagePath>Assets\Square150x150Logo.scale-140.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Iulia\Documents\Visual Studio 2015\Projects\ColorBlind\ColorBlind\Assets\Square150x150Logo.scale-240.png">
+      <PackagePath>Assets\Square150x150Logo.scale-240.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Iulia\Documents\Visual Studio 2015\Projects\ColorBlind\ColorBlind\Assets\Square71x71Logo.scale-240.png">

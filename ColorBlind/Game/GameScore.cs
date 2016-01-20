@@ -22,10 +22,10 @@ namespace ColorBlind
             for(int i = 1; i < noOfLevels; i++)
             {
                 Dictionary<String, int> level = new Dictionary<String, int>();
-                level.Add("NextLevelScore", 200*i);
+                level.Add("NextLevelScore", 100*i);
                 level.Add("PointLevel", 10*i);
                 level.Add("Level", i);
-                level.Add("Speed", 100*i); //no idea how fast this is
+                //level.Add("Speed", 2*i); // blinkness = max 7 for last level
                 level.Add("Color", GenerateSize.Next(colors.Count));
                 levelUpgrades.Add(level);
             }
@@ -36,10 +36,10 @@ namespace ColorBlind
         {
             //int numberOfScores = colors.Count;
             //Chosen = GenerateSize.Next(colors.Count);
-           // levelColor = colors[Chosen];
+            //levelColor = colors[Chosen];
             NextLevelScore = levelUpgrades[Level - 1]["NextLevelScore"];
             PointLevel = levelUpgrades[Level - 1]["PointLevel"];
-            Speed = levelUpgrades[Level - 1]["Speed"];
+           // Speed = levelUpgrades[Level - 1]["Speed"];
             Level = levelUpgrades[Level - 1]["Level"];
             levelColor = colors[levelUpgrades[Level - 1]["Color"]];
         }
@@ -60,20 +60,21 @@ namespace ColorBlind
             ScoreBoard.Children.Add(ColorButton);
 
 
-            levelScoreButtom.Margin = new Thickness(ScreenWidth * 3 / 4, 15, 0, 0);
+            levelScoreButtom.Margin = new Thickness(this.ActualWidth * 3 / 4, 15, 0, 0);
             levelScoreButtom.Visibility = Visibility.Visible;
             levelScoreButtom.FontSize = 14;
             levelScoreButtom.Foreground = levelColor;
 
-            livesDisplay.Margin = new Thickness(ScreenWidth * 3 / 4, 30, 0, 0);
+            livesDisplay.Margin = new Thickness(this.ActualWidth * 3 / 4, 30, 0, 0);
             livesDisplay.Foreground = levelColor;
             livesDisplay.Visibility = Visibility.Visible;
             livesDisplay.FontSize = 14;
 
             CurrentlevelButton.Foreground = levelColor;
-            CurrentlevelButton.Margin = new Thickness(ScreenWidth * 3 / 4, 45, 0, 0);
+            CurrentlevelButton.Margin = new Thickness(this.ActualWidth * 3 / 4, 45, 0, 0);
             CurrentlevelButton.Visibility = Visibility.Visible;
             CurrentlevelButton.FontSize = 14;
+
         }
     public void StopScore()
         {

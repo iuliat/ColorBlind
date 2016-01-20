@@ -16,6 +16,8 @@ namespace ColorBlind
             PlayButton.Visibility = Visibility.Collapsed;
             ResetButton.Visibility = Visibility.Visible;
             HomeButton.Visibility = Visibility.Visible;
+            CurrentlevelButton.Visibility = Visibility.Visible;
+
             if (this.DrawTimer == null)
             {
                 this.DrawTimer = new Timer(TriggerCallback, this, Slowness, Slowness);
@@ -45,6 +47,7 @@ namespace ColorBlind
 
                 StopScore();
             }
+
         }
 
         private void Pause(object sender, RoutedEventArgs e)
@@ -67,7 +70,9 @@ namespace ColorBlind
         }
         private void GoHome(object sender, RoutedEventArgs e)
         {
+            
             Stop(sender, e);
+
             Intro.Visibility = Visibility.Visible;
             PauseButton.Visibility = Visibility.Collapsed;
             ResetButton.Visibility = Visibility.Collapsed;
@@ -76,6 +81,37 @@ namespace ColorBlind
             PlayButton.Visibility = Visibility.Visible;
             GameOver.Visibility = Visibility.Collapsed;
             NextLevel.Visibility = Visibility.Collapsed;
+
+            getSettingsForLevel(1);
+            lives = 5;
+            int numberOfScores = colors.Count;
+            Chosen = GenerateSize.Next(colors.Count);
+            levelColor = colors[Chosen];
+            ColorButton.Foreground = levelColor;
+            ColorButton.BorderBrush = levelColor;
+            ColorButton.Background = levelColor;
+
+
+            levelScoreButtom.Margin = new Thickness(this.ActualWidth * 3 / 4, 15, 0, 0);
+            levelScoreButtom.Visibility = Visibility.Collapsed;
+            levelScoreButtom.FontSize = 14;
+            levelScoreButtom.Foreground = levelColor;
+            levelScoreButtom.Text = "Score:" + 0;
+
+            livesDisplay.Margin = new Thickness(this.ActualWidth * 3 / 4, 30, 0, 0);
+            livesDisplay.Foreground = levelColor;
+            livesDisplay.Visibility = Visibility.Collapsed;
+            livesDisplay.FontSize = 14;
+            livesDisplay.Text = "Lives:" + lives;
+
+            CurrentlevelButton.Foreground = levelColor;
+            CurrentlevelButton.Margin = new Thickness(this.ActualWidth * 3 / 4, 45, 0, 0);
+            CurrentlevelButton.Visibility = Visibility.Collapsed;
+            CurrentlevelButton.FontSize = 14;
+            CurrentlevelButton.Text = "Level:" + 0;
+            ScoreBoard.Children.Add(levelScoreButtom);
+            ScoreBoard.Children.Add(livesDisplay);
+            ScoreBoard.Children.Add(CurrentlevelButton);
         }
 
 
@@ -121,6 +157,7 @@ namespace ColorBlind
         {
             Stop(sender, e);
             lives = 5;
+            getSettingsForLevel(1);
             Start(sender, e);
             NextLevel.Visibility = Visibility.Collapsed;
             GameOver.Visibility = Visibility.Collapsed;
@@ -132,24 +169,25 @@ namespace ColorBlind
             ColorButton.Foreground = levelColor;
             ColorButton.BorderBrush = levelColor;
             ColorButton.Background = levelColor;
+            
 
-            levelScoreButtom.Margin = new Thickness(ScreenWidth * 3 / 4, 15, 0, 0);
+            levelScoreButtom.Margin = new Thickness(this.ActualWidth * 3 / 4, 15, 0, 0);
             levelScoreButtom.Visibility = Visibility.Visible;
             levelScoreButtom.FontSize = 14;
             levelScoreButtom.Foreground = levelColor;
             levelScoreButtom.Text = "Score:" + 0;
 
-            livesDisplay.Margin = new Thickness(ScreenWidth * 3 / 4, 30, 0, 0);
+            livesDisplay.Margin = new Thickness(this.ActualWidth * 3 / 4, 30, 0, 0);
             livesDisplay.Foreground = levelColor;
             livesDisplay.Visibility = Visibility.Visible;
             livesDisplay.FontSize = 14;
             livesDisplay.Text = "Lives:" + lives;
 
             CurrentlevelButton.Foreground = levelColor;
-            CurrentlevelButton.Margin = new Thickness(ScreenWidth * 3 / 4, 45, 0, 0);
+            CurrentlevelButton.Margin = new Thickness(this.ActualWidth * 3 / 4, 45, 0, 0);
             CurrentlevelButton.Visibility = Visibility.Visible;
             CurrentlevelButton.FontSize = 14;
-            CurrentlevelButton.Text = "Level:" + Level;
+            CurrentlevelButton.Text = "Level:" + 0;
             ScoreBoard.Children.Add(levelScoreButtom);
             ScoreBoard.Children.Add(livesDisplay);
             ScoreBoard.Children.Add(CurrentlevelButton);

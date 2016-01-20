@@ -8,14 +8,14 @@ namespace ColorBlind
     {
         //        public readonly DisplayOrientations InitialOrientation = DisplayProperties.CurrentOrientation;
 
-        private readonly int SlownessDefault = 33;
+        private readonly int SlownessDefault = 20;
         private readonly int BlinknessDefault = 1;
-        private int Slowness = 33;
+        private int Slowness = 32;
         private int Blinkness = 1;
-        private readonly int HardshipTime = 10000;
+       private readonly int HardshipTime = 10000;
 
-        public readonly int ScreenHeight = 640;
-        public readonly int ScreenWidth = 400;
+      //  public readonly int thisHeight = 640;
+     //   public readonly int thisWidth = 400;
         public int RectangleHeightMax
         {
             get

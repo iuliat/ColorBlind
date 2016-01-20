@@ -38,10 +38,11 @@ namespace ColorBlind
             ResetButton.Visibility = Visibility.Collapsed;
             NextLevelButton.Visibility = Visibility.Collapsed;
             HomeButton.Visibility = Visibility.Collapsed;
-            GameDescription.Text = "Catch all the blocks having the color\n" + "displayed in the left corner of the screen.\n" + "Let's see how quick you are.";
-            GameDescription.Width = 350;
-            GameDescription.Height = 350;
-            GameDescription.Margin = new Thickness(((ScreenWidth - GameDescription.Width)/2), ((ScreenHeight - GameDescription.Height) / 2), 0, 0);
+            GameDescription.Text = "Catch all the blocks having the color\n" + " displayed in the left corner of the screen.\n" + "Let's see how quick you are.";
+           // GameDescription.Width = 350;
+          //  GameDescription.Height = 350;
+            // GameDescription.Margin = new Thickness(((this.ActualWidth - GameDescription.Width) / 2), ((this.ActualHeight - GameDescription.Height) / 2), 0, 0);
+          //  GameDescription.Margin = new Thickness(0, GameDescription.Height, 0, 0);
         }
 
         public void generateColors()
@@ -89,7 +90,7 @@ namespace ColorBlind
                 {
                     double y = rectangle.Margin.Top + Blinkness;
 
-                    if (rectangle.Margin.Top > ScreenHeight - BarHeightTop)
+                    if (rectangle.Margin.Top > this.ActualHeight - BarHeightTop)
                     {
                         RemoveList.AddLast(rectangle);
                         if (rectangle.Fill == levelColor)
@@ -120,6 +121,7 @@ namespace ColorBlind
             if (score >= NextLevelScore)
             {
                 Level++;
+               // Blinkness = Speed;
                 this.getSettingsForLevel(Level);
                 object sender = new object();
                 RoutedEventArgs e = new RoutedEventArgs();
@@ -128,9 +130,9 @@ namespace ColorBlind
                 CurrentlevelButton.Text = "Level:" + Level;
 
                 NextLevel.Visibility = Visibility.Visible;
-                NextLevelDescription.Padding = new Thickness(0, ScreenHeight / 3, 0, 0);
-                NextLevelDescription.Height = ScreenHeight;
-                NextLevelDescription.Width = ScreenWidth;
+                NextLevelDescription.Padding = new Thickness(0, this.ActualHeight / 3, 0, 0);
+                NextLevelDescription.Height = this.ActualHeight;
+                NextLevelDescription.Width = this.ActualWidth;
                 NextLevelDescription.Text = "Level " + Level;
                 //NextLevelButton.Padding = new Thickness(0, ScreenHeight / 2, 0, 0);
                 //NextLevelButton.Height = ScreenHeight;
@@ -190,9 +192,9 @@ namespace ColorBlind
             PauseButton.Visibility = Visibility.Collapsed;
                 PlayButton.Visibility = Visibility.Collapsed;
                 GameOver.Visibility = Visibility.Visible;
-                GameOverDescription.Padding = new Thickness(0, ScreenHeight /2,0,0);
-                GameOverDescription.Height = ScreenHeight;
-                GameOverDescription.Width = ScreenWidth;
+                GameOverDescription.Padding = new Thickness(0, this.ActualHeight /2,0,0);
+                GameOverDescription.Height = this.ActualHeight;
+                GameOverDescription.Width = this.ActualWidth;
                 //pop up game over
             }
 
@@ -209,7 +211,7 @@ namespace ColorBlind
             rectangle.Width = GenerateSize.Next(RectangleWidthMin, RectangleWidthMax);
             rectangle.Height = GenerateSize.Next(RectangleHeightMin, RectangleHeightMax);
 
-            double Left = (double)GenerateSize.Next(0, (int)(ScreenWidth - rectangle.Width));
+            double Left = (double)GenerateSize.Next(0, (int)(this.ActualWidth - rectangle.Width));
             double Top = (double)GenerateSize.Next(0, (int)(RectangleHeightMax - rectangle.Height));
             rectangle.Margin = new Thickness(Left, Top, 0, 0);
 

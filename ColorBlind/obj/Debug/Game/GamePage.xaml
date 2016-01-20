@@ -9,7 +9,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.BottomAppBar>
-        
+
         <CommandBar x:Name="commandBar">
             <AppBarButton x:ConnectionId='1' Icon="Home" x:Name="HomeButton" Label="Home"               />
             <AppBarButton x:ConnectionId='2' Icon="Play" x:Name="PlayButton" Label="Play"              />
@@ -29,13 +29,14 @@
             </Grid.Background>
             <TextBlock x:Name="levelScoreButtom" Text="Score:0" Visibility="Collapsed" />
             <TextBlock x:Name="livesDisplay" Text="Lives:5" Visibility="Collapsed"  />
-            <TextBlock x:Name="CurrentlevelButton" Text="Level:1" Visibility="Collapsed"/>         
+            <TextBlock x:Name="CurrentlevelButton" Text="Level:1" Visibility="Collapsed"/>
         </Grid>
 
         <Canvas x:Name="Intro" Margin="0">
-            <TextBlock x:Name="GameDescription"  FontSize="18.667" TextAlignment="Center"  LineHeight="6.667" />
+            <TextBlock Text="ColorBlind" FontSize="40" TextAlignment="Center" Canvas.Left="5" Canvas.Top="213" Width="390"  />
+            <TextBlock x:Name="GameDescription"  FontSize="18.667" TextAlignment="Center"  LineHeight="6.667" Canvas.Left="5" Canvas.Top="283" Height="160" Width="395" />
         </Canvas>
-        
+
         <Canvas x:Name="GameArea" Margin="0">
         </Canvas>
         <Canvas x:Name="GameOver" Margin="0,0,0,0" Visibility="Collapsed">
